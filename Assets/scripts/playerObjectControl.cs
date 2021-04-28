@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class playerObjectControl : MonoBehaviour
 {
-    private Rigidbody rb;
-    private Vector3 playerPos = new Vector3(0, 5f, 0);
-
-	private float rotationRate = 5f;
-
-	// Use this for initialization
-	void Awake () {
-		rb = GetComponent<Rigidbody> ();
-	}
+    private float turnRate = 100f;
+	private float moveRate = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +15,7 @@ public class playerObjectControl : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
-		transform.RotateAround(transform.position, Vector3.up, rotationRate * Time.deltaTime);
+		transform.Rotate(Vector3.up * turnRate * Input.GetAxis("Horizontal") * Time.deltaTime);
+		transform.Translate(0f, 0f, moveRate * Input.GetAxis("Vertical") * Time.deltaTime);
 	}
 }
