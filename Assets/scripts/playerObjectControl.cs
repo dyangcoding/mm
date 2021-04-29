@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playerObjectControl : MonoBehaviour
 {
-    private float turnRate = 100f;
-	private float moveRate = 10f;
+    private float speed = 10f;
+    private float rotationSpeed = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,18 @@ public class playerObjectControl : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
-		transform.Rotate(Vector3.up * turnRate * Input.GetAxis("Horizontal") * Time.deltaTime);
-		transform.Translate(0f, 0f, moveRate * Input.GetAxis("Vertical") * Time.deltaTime);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        movementDirection.Normalize();
+
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);            
+        }
 	}
 }
