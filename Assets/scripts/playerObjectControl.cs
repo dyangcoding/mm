@@ -5,7 +5,8 @@ using UnityEngine;
 public class playerObjectControl : MonoBehaviour
 {
     private float speed = 10f;
-    private float rotationSpeed = 20f;
+
+    public float angle = .1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,16 +18,11 @@ public class playerObjectControl : MonoBehaviour
 	void Update () {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        angle += horizontalInput * Time.deltaTime;
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        movementDirection.Normalize();
+        Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
 
-        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
-
-        if (movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);            
-        }
+        transform.Translate(targetDirection * verticalInput * speed * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(targetDirection);
 	}
 }
