@@ -19,7 +19,6 @@ public class MainCameraControl : MonoBehaviour
         Vector3 needPos = target.transform.position - forward;
 
         transform.position = Vector3.SmoothDamp(transform.position, needPos, ref velocity, 0.05f);
-        transform.LookAt(target.transform);
         transform.rotation = target.transform.rotation;
     }
 }
