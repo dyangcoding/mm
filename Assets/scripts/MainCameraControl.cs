@@ -6,12 +6,12 @@ public class MainCameraControl : MonoBehaviour
 {
     public Transform target;
 
-    private Vector3 offset;
+    private Vector3 offset = new Vector3(0, 0, -5f);
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - target.transform.position;    
+
     }
 
     // Update is called once per frame
