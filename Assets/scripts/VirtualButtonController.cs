@@ -8,6 +8,11 @@ public class VirtualButtonController : MonoBehaviour
     public GameObject area;
     public GameObject player;
 
+    private bool moveFrontBtnPressed = false;
+    private bool moveBackBtnPressed = false;
+    private bool rotateLeftBtnPressed = false;
+    private bool rotateRightBtnPressed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +24,43 @@ public class VirtualButtonController : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (this.moveFrontBtnPressed)
+        {
+            player.transform.Translate(Vector3.forward * Time.deltaTime);
+        }
+        if (this.moveBackBtnPressed)
+        {
+            player.transform.Translate(Vector3.back * Time.deltaTime);
+        }
+        if (this.rotateLeftBtnPressed)
+        {
+            player.transform.Rotate(Vector3.up * Time.deltaTime);
+        }
+        if (this.rotateRightBtnPressed)
+        {
+            player.transform.Rotate(Vector3.down * Time.deltaTime);
+        }
+    }
+
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
         Debug.Log("OnButtonPressed: " + vb.VirtualButtonName);
         switch (vb.VirtualButtonName)
         {
             case "moveFrontBtn":
-                player.transform.Translate(Vector3.forward * Time.deltaTime);
+                this.moveFrontBtnPressed = true;
                 break;
             case "moveBackBtn":
-                player.transform.Translate(Vector3.back * Time.deltaTime);
+                this.moveBackBtnPressed = true;
                 break;
             case "rotateLeftBtn":
-                player.transform.Rotate(Vector3.up * Time.deltaTime);
+                this.rotateLeftBtnPressed = true;
                 break;
             case "rotateRightBtn":
-                player.transform.Rotate(Vector3.down * Time.deltaTime);
+                this.rotateRightBtnPressed = true;
                 break;
         }
     }
@@ -45,6 +71,21 @@ public class VirtualButtonController : MonoBehaviour
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
         Debug.Log("OnButtonReleased: " + vb.VirtualButtonName);
+        switch (vb.VirtualButtonName)
+        {
+            case "moveFrontBtn":
+                this.moveFrontBtnPressed = false;
+                break;
+            case "moveBackBtn":
+                this.moveBackBtnPressed = false;
+                break;
+            case "rotateLeftBtn":
+                this.rotateLeftBtnPressed = false;
+                break;
+            case "rotateRightBtn":
+                this.rotateRightBtnPressed = false;
+                break;
+        }
     }
 
 }
