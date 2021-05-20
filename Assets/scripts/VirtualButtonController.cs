@@ -13,6 +13,9 @@ public class VirtualButtonController : MonoBehaviour
     private bool rotateLeftBtnPressed = false;
     private bool rotateRightBtnPressed = false;
 
+    private float speed = 90;
+    float yRotation = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +40,13 @@ public class VirtualButtonController : MonoBehaviour
         }
         if (this.rotateLeftBtnPressed)
         {
-            player.transform.Rotate(Vector3.left * Time.deltaTime); ;
+            yRotation += Time.deltaTime * speed;
+            player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
         if (this.rotateRightBtnPressed)
         {
-            player.transform.Rotate(Vector3.right * Time.deltaTime);
+            yRotation -= Time.deltaTime * speed;
+            player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
     }
 
