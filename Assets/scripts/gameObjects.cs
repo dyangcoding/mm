@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class gameObjects : MonoBehaviour
 {
+    public Transform parent;
     public Transform myPrefab;
     private float rotationRate = 50f;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i=0; i < 5; i++) {
-            var position = new Vector3(Random.Range(-10.0f, 10.0f), 0, Random.Range(-10.0f, 10.0f));
-            Instantiate (myPrefab, position, Quaternion.identity);
-        }
-        
+        Instantiate(myPrefab, transform.position, Quaternion.identity, transform);
     }
 
     // Update is called once per frame
