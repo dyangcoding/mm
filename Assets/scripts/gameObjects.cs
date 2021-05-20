@@ -14,6 +14,7 @@ public class gameObjects : MonoBehaviour
         for (int i=0; i < 5; i++) {
             var position = new Vector3(Random.Range(parent.localScale.x * 0.5f, parent.localScale.x * -0.5f), 0, Random.Range(parent.localScale.z * 0.5f, parent.localScale.z * -0.5f));
             var gb = Instantiate (myPrefab, position, Quaternion.identity);
+            gb.SetParent(parent);
             gb.localPosition = position;
         }
     }
