@@ -11,7 +11,11 @@ public class gameObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(myPrefab, transform.position, Quaternion.identity, transform);
+        for (int i=0; i < 5; i++) {
+            var position = new Vector3(Random.Range(parent.localScale.x * 0.5, parent.localScale.x * -0.5), 0, Random.Range(parent.localScale.z * 0.5, parent.localScale.z * -0.5));
+            var gb = Instantiate (myPrefab, position, Quaternion.identity);
+            gb.localPosition = position;
+        }
     }
 
     // Update is called once per frame
