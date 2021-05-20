@@ -37,11 +37,11 @@ public class VirtualButtonController : MonoBehaviour
         }
         if (this.rotateLeftBtnPressed)
         {
-            player.transform.Rotate(Vector3.up * Time.deltaTime);
+            player.transform.Rotate(Vector3.left * Time.deltaTime); ;
         }
         if (this.rotateRightBtnPressed)
         {
-            player.transform.Rotate(Vector3.down * Time.deltaTime);
+            player.transform.Rotate(Vector3.right * Time.deltaTime);
         }
     }
 
