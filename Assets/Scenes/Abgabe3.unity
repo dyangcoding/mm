@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 166876619}
   m_Layer: 0
   m_Name: gameObjects
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 7313232343034190501, guid: 9341c4754bb3447069c991ce83361081, type: 3}
+  tableMat: {fileID: 2100000, guid: 304bd45376309454c84519533d91eff5, type: 2}
 --- !u!4 &166876620
 Transform:
   m_ObjectHideFlags: 0
@@ -1334,7 +1335,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1cc10190659484f4aa8c25ab0019d28c, type: 2}
+  - {fileID: 2100000, guid: 304bd45376309454c84519533d91eff5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
