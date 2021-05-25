@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
